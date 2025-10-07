@@ -21,7 +21,6 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: latest
-          cache: 'npm'
 
       - name: Install marp-cli
         run: npm install -g @marp-team/marp-cli
