@@ -1,0 +1,63 @@
+/* @theme manaby */
+
+@import 'default';
+
+@font-face {
+  font-family: "CP-Font";
+  src:
+    local("チェックポイントフォント"),
+    url("CP Font.otf") format("opentype"),
+}
+
+@font-face {
+  font-family: "keifont";
+  src:
+    local("けいふぉんと"),
+    url("keifont.ttf") format("truetype"),
+}
+
+:root {
+  --color-tompedia: #825dab;
+  --color-manaby: #f08301;
+  --line-width: 20px;
+}
+
+section {
+  --line-width: 20px;
+  border-left: var(--line-width) solid var(--color-tompedia);
+  box-shadow: inset var(--line-width) 0 0 0 var(--color-manaby);
+}
+section::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  height: 101px;
+  width: 20%;
+  background-image: url('logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+span.eventName {
+  font-family: 'CP-Font', sans-serif;
+  font-weight: bold;
+  color: var(--color-manaby);
+}
+span.eventWeb {
+  color: var(--color-tompedia);
+}
+section:not([id='1']) > h1,
+section:not([id='1']) > h2,
+section:not([id='1']) > h3 {
+  font-family: 'keifont', sans-serif;
+  font-weight: normal;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 16px;
+}
+
+.columns { display: flex; gap: 1rem; }
+.columns>div {flex:1}
+.result { border: 1px solid #ddd;}

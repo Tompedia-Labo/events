@@ -1,0 +1,593 @@
+---
+marp: true
+---
+
+<style>@import 'assets/theme.css';</style>
+
+# Webサイト制作はじめの一歩
+## <span class="eventName">つくって学ぶ！<span class="eventWeb">はじめてのWebサイトづくり</span> 2DAYS</span>
+
+---
+
+## 今日やること
+
+1.  **Webページの仕組みを知る** (HTML, CSS, JavaScriptって何？)
+2.  **部品を組み合わせてLP(ランディングページ)を作ってみる**
+3.  **作ったページを自分流にカスタマイズする**
+
+**ゴール：** プログラミングの楽しさを体験し、「自分でも作れる！」を実感する！
+
+---
+
+## Webページってどうやってできてるの？
+
+Webページは、主に3つの言語の組み合わせでできています。
+
+-   **HTML** → **骨組み**担当
+-   **CSS** → **見た目**担当
+-   **JavaScript** → **動き**担当
+
+---
+
+### **HTML**って何?
+#### > ページの「骨組み」を作る言語
+
+-   HyperText Markup Languageの略
+-   見出し、段落、画像などの「構造」を指定する
+-   「タイトルはこれです」「本文の次に画像を置きます」といった指示書
+
+```html
+<h1>こんにちは！</h1>
+<p>これは私のウェブサイトです。</p>
+<img src="photo.jpg" />
+```
+
+---
+
+### **HTML**: 実際のコードを分解してみよう
+
+<div class="columns">
+<div>
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+      <meta charset="UTF-8">
+      <title>私のウェブサイト</title>
+  </head>
+  <body>
+      <h1>こんにちは！</h1>
+      <p>これは私のウェブサイトです。</p>
+  </body>
+</html>
+```
+</div>
+<div class="result">
+
+<h1>こんにちは！</h1>
+<p>これは私のウェブサイトです。</p>
+
+</div>
+</div>
+
+---
+
+### **HTML**の基本構造
+
+
+```html
+<タグ 属性="値">内容</タグ>
+<タグ 属性="値" />
+<!-- コメント -->
+```
+
+タグで囲って、中身を書く。属性(プロパティ)で細かい指定ができます。
+
+中身がいらないタグ(画像など)は、閉じタグを省略できることがあります。その場合、閉じカッコを`/>`にします。
+
+```html
+<img src="photo.jpg" />
+```
+
+---
+
+### **HTML**の基本構造
+
+```html
+<!DOCTYPE html> <!-- HTML5で書かれていますよ、という宣言 -->
+<html lang="ja"> <!-- ページ全体を囲んで、言語などを指定 -->
+  <head>
+    <!-- ページのプロパティを設定。デザインファイルと紐づけたり、タイトルを指定したり。 -->
+  </head>
+  <body>
+    <!-- ページの中身を指定 -->
+  </body>
+</html>
+```
+
+htmlでページを作るときは、このような構造で書くことになっています。
+`<!DOCTYPE html>`は特殊なタグです。それ以外は基本的なタグのルールに従っています。
+
+---
+
+### **HTML**: よく使うタグ
+
+<div class="columns">
+<div>
+
+```html
+<h1>大見出し</h1>
+<h2>中見出し</h2>
+<p>段落。<span>一部だけ</span>
+  見た目を変えられます。</p>
+<div>
+  <img src="https://placehold.co/150" />
+  <p>divで複数のタグを囲めます</p>
+</div>
+```
+</div>
+<div class="result">
+
+<h1>大見出し</h1>
+<h2>中見出し</h2>
+<p>段落。<span style="color: red; font-weight: bold;">一部だけ</span>
+  見た目を変えられます。</p>
+<div>
+  <img src="https://placehold.co/150" />
+  <p>divで複数のタグを囲めます</p>
+</div>
+
+</div>
+</div>
+
+---
+
+### **HTML**: よく使うタグ
+
+<div class="columns">
+<div>
+
+```html
+<h1>大見出し</h1>
+<h2>中見出し</h2>
+<h3>小見出し</h3>
+<h4>見出し4</h4>
+<h5>見出し5</h5>
+<h6>見出し6</h6>
+```
+
+htmlでは、`h1`から`h6`までの6段階の見出しタグがあります。数字が小さいほど大きな見出しになります。
+適切なタグを使っておくと、Googleなどが内容を理解して検索順位を上げてくれたり、画面読み上げソフトが正しく読み上げてくれたりします。
+
+</div>
+<div class="result">
+
+<h1>大見出し</h1>
+<h2>中見出し</h2>
+<h3>小見出し</h3>
+<h4>見出し4</h4>
+<h5>見出し5</h5>
+<h6>見出し6</h6>
+
+</div>
+</div>
+
+---
+
+### **HTML**: よく使うタグ
+
+<div class="columns">
+<div>
+
+```html
+<style>span{color: red;}</style>
+<p>段落。<span>一部だけ</span>
+  見た目を変えられます。</p>
+
+<p>二段落目。段落の中で<br>
+  無理やり改行することもできます。</p>
+
+<p><strong>太字</strong>　<em>斜体</em>
+  <mark>蛍光ペン</mark></p>
+```
+</div>
+<div class="result">
+
+<style scoped>span{color: red;}</style>
+<p>段落。<span>一部だけ</span>
+  見た目を変えられます。</p>
+<p>二段落目。段落の中で<br>
+  無理やり改行することもできます。</p>
+<p><strong>太字</strong> <em>斜体</em>
+  <mark>蛍光ペン</mark></p>
+
+</div>
+</div>
+
+長めの文章を書くときは、`<p>`タグで囲みます。paragraphのpです。
+
+段落の中で一部だけ見た目を変えるためのタグはいくつかあります。`<span>`は汎用的なタグで、それ単体ではスタイルはつきません。具体的なスタイルはCSSで指定します。書き方は後のスライドで。
+
+`<br>`タグは段落の中に改行を入れたいときに使います。
+
+---
+
+### **HTML**: よく使うタグ
+
+<div class="columns">
+<div>
+
+```html
+<main>
+  <h1>タイトル</h1>
+  <div class="columns">
+    <div class="section">
+      <h2>セクション1</h2>
+      <p>段落1</p>
+    </div>
+
+    <div class="section">
+      <h2>セクション2</h2>
+      <p>段落2</p>
+      <img src="placehold.co/150" />
+    </div>
+  </div>
+</main>
+```
+
+</div>
+<div class="result">
+
+<style scoped>
+.columns {
+  display: flex;
+  gap: 20px;
+}
+.section {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+</style>
+<h1>タイトル</h1>
+<div class="columns">
+  <div class="section">
+    <h2>セクション1</h2>
+    <p>段落1</p>
+  </div>
+
+  <div class="section">
+    <h2>セクション2</h2>
+    <p>段落2</p>
+    <img src="https://placehold.co/150" />
+  </div>
+</div>
+
+</div>
+</div>
+
+`<div>`タグは、複数のタグをまとめて1つのグループにしたいときに使います。`<main>`や`<header>`などは見た目は同じですが、意味を付与できます。
+
+---
+
+### **CSS**ってなに?
+#### > ページの「見た目」を飾る言語
+
+-   Cascading Style Sheetsの略
+-   色、サイズ、フォント、レイアウトなどを指定する
+-   HTMLに「服を着せる」イメージ
+
+```css
+h1 { /* ページ内のすべてのh1タグに適用 */
+  color: blue; /* 文字を青く */
+  font-size: 32px; /* 文字を大きく */
+}
+```
+
+---
+
+### **CSS**: 実際のコードで見てみよう
+
+<div class="columns">
+<div>
+
+```html
+<h1>こんにちは！</h1>
+<p>これは私のウェブサイトです。</p>
+<img
+  src="https://placehold.co/600x400" />
+```
+
+```css
+h1 {
+  color: blue;
+  font-size: 32px;
+}
+img {
+  display: block;
+  width: 50%;
+  margin: auto;
+}
+```
+</div>
+<div class="result">
+
+<style scoped>
+.result h1 { color: blue; font-size: 32px; }
+.result img { display: block; width: 50%; margin: auto; }
+</style>
+<h1>こんにちは！</h1>
+<p>これは私のウェブサイトです。</p>
+<img src="https://placehold.co/600x400" alt="photo.jpg">
+</div>
+</div>
+
+---
+
+### **CSS**の基本構造
+
+```css
+/* コメント */
+セレクタ { /* どのタグに適用するか指定 */
+  プロパティ: 値;
+  プロパティ: 値;
+}
+```
+
+セレクタでどのタグに適用するかを指定し、プロパティと値で見た目を指定します。
+
+複数のセレクタを指定することもできます。
+```css
+h1, h2, h3 {
+  color: blue;
+}
+```
+
+---
+
+### **CSS**の基本構造: セレクタ
+
+htmlのタグには、クラスやIDを付けることができます。同じクラスを複数のタグに付けられますが、同じIDは1つのタグにしか付けられません。
+```html
+<p class="bold" id="paragraph1">太字の段落</p>
+```
+タグ名、クラス名、ID名の組み合わせを手がかりに、適用するタグを抽出してスタイルを指定します。
+
+```css
+p { /* すべてのpタグに適用 */ }
+p.bold { /* class="bold"がついたpタグに適用 */ }
+.bold { /* class="bold"がついたすべてのタグに適用 */ }
+#paragraph1 { /* id="paragraph1"がついた唯一のタグに適用 */ }
+```
+
+---
+
+### **CSS**の基本構造: セレクタ
+
+<div class="columns">
+<div>
+
+```html
+<h1>こんにちは！</h1>
+<p>
+  これは私のウェブサイトです。
+  私の趣味は
+  <span
+    class="keyword programming"
+  >プログラミング</span>と
+  <span class="keyword">登山</span>です。
+</p>
+```
+
+```css
+span.keyword {
+  font-weight: bold;
+}
+
+span.programming {
+  color: blue;
+}
+```
+</div>
+<div class="result">
+
+<style scoped>
+span.keyword {
+  font-weight: bold;
+}
+
+span.programming {
+  color: blue;
+}
+</style>
+<h1>こんにちは！</h1>
+<p>
+  これは私のウェブサイトです。
+  私の趣味は
+  <span
+    class="keyword programming"
+  >プログラミング</span>と
+  <span class="keyword">登山</span>です。
+</p>
+
+</div>
+</div>
+
+---
+
+### **CSS**の基本構造: プロパティ
+
+```css
+div {
+  color: yellow; /* 文字色を黄色に */
+  font-weight: bold; /* 太字に */
+  font-size: 40px; /* 文字サイズを40pxに */
+  background-color: black; /* 背景色を黒に */
+  text-align: center; /* 中央寄せに */
+  margin: 30px; /* 外側の余白を30pxに */
+  padding: 20px; /* 内側の余白を20pxに */
+}
+```
+
+<style scoped>
+.example-div {
+  color: yellow; /* 文字色を黄色に */
+  font-weight: bold; /* 太字に */
+  font-size: 40px; /* 文字サイズを40pxに */
+  background-color: black; /* 背景色を黒に */
+  text-align: center; /* 中央寄せに */
+  margin: 30px; /* 外側の余白を30pxに */
+  padding: 20px; /* 内側の余白を20pxに */
+}
+</style>
+<div class="result">
+<div class="example-div">これはサンプルのdivです。</div>
+</div>
+
+---
+
+### **CSS**: こんな書き方もできる
+
+<div class="columns">
+<div>
+
+```html
+<body>
+  <div>
+    <h1>こんにちは！</h1>
+    <p>これは私のウェブサイトです。</p>
+  </div>
+  <img src="https://placehold.co/150" />
+</body>
+```
+
+```css
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+```
+</div>
+<div class="result">
+
+<style scoped>
+.result-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
+<div class="result-body">
+  <div>
+    <h1>こんにちは！</h1>
+    <p>これは私のウェブサイトです。</p>
+  </div>
+  <img src="https://placehold.co/150">
+</div>
+
+</div>
+</div>
+
+---
+
+### **JavaScript**
+#### > ページに「動き」や「機能」をつけるプログラミング言語
+
+-   ボタンをクリックしたらメニューが開く
+-   入力フォームに文字を入れたらメッセージが出る
+-   ページの一部が自動で更新される
+-   独自のhtmlタグを定義する
+
+など、HTMLとCSSだけではできないことを実現します。
+その分、新しい概念が多くて少し難しいので、今回はあまり詳しく説明しません。
+
+---
+
+### **JavaScript**: 読み込み方法
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>私のウェブサイト</title>
+
+    <!-- 他のファイルを参照する -->
+    <script src="js/script.js"></script>
+
+    <!-- 直接コードを書く -->
+    <script>
+      const buttonClick = () => alert("ボタンがクリックされました！");
+    </script>
+  </head>
+  <body>
+    <h1>こんにちは！</h1>
+    <button onclick="buttonClick()">クリックしてね</button>
+  </body>
+</html>
+```
+
+---
+
+## 今日の作り方：魔法の部品（Web Components）
+
+JavaScriptの技術を使うと、**自分だけのHTMLタグ**を作ることができます。
+
+今回は、ファイルの中の`<template>`タグで定義された **「部品」** を自動的に読み込んで、 **自分だけのHTMLタグ** として使えるようにするJavaScriptを用意しました。
+
+`<template>`タグは、それ自体は画面に表示されないタグです。この中にHTMLやCSSを書けば、あとは好きな場所に部品を置くだけで、同じパーツを何度でも使えます。
+
+```html
+<template id="my-header">
+  <style>
+    header { background-color: #333; }
+  </style>
+  <header>
+    <h1>私のウェブサイト</h1>
+  </header>
+</template>
+```
+
+---
+
+## 今日の作り方：魔法の部品（Web Components）
+
+皆さんは、あらかじめ用意された **「部品」** を組み合わせるだけで、LPが作れます。
+
+-   `<app-header>` → ヘッダー部品
+-   `<hero-section>` → メイン画像部品
+-   `<features-section>` → 特徴を紹介する部品
+
+まるで**レゴブロック**のように、ページを組み立ててみましょう！
+
+部品の中身を変えたり、色や画像を変えたりして、自分流にカスタマイズすることもできます。
+
+もちろん、部品を自分で作ることもできますよ！ `<template>`のidが部品名になります。
+
+---
+
+## さあ、作ってみよう！ (Let's Code!)
+
+ここからは、配布した`tutorial.md`を見ながら、メンターと一緒に作業を進めていきましょう！
+
+1.  **STEP 1: 準備** (ファイルを開いて、部品を読み込む)
+2.  **STEP 2: 組み立て** (好きな部品を並べてみる)
+3.  **STEP 3: カスタマイズ** (文字や色、画像を変えてみる)
+4.  **STEP 4: オリジナル部品作成** (自分だけの部品を作る)
+
+---
+
+## 困ったときは？
+
+-   **調べるコツを覚えよう！**
+    -   geminiなどのAIにコードを渡して聞くと、かなり正確に答えてくれます。
+    -   [MDN Web Docs](https://developer.mozilla.org/ja/)には、HTML/CSS/JavaScriptのリファレンスが揃っています。[初心者向けの解説](https://developer.mozilla.org/ja/docs/Learn_web_development/Getting_started/Your_first_website/Creating_the_content)もたくさんあります。
+-   **どんどんメンターに質問しよう！**
+    -   エラーが出た、思った通りに動かない、なんでも聞いてください。
+-   **どんどん先に進んでOK!**
+    -   分かる人はAIなどの力も借りながら、どんどん進めてください。解説したのはあくまで取っ掛かりの部分です。好きなだけ先に進んでOKです。
+
+**楽しむことが一番大事！**
+それでは、コーディングを始めましょう！
