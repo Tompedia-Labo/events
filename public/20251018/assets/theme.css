@@ -16,13 +16,21 @@
     url("keifont.ttf") format("truetype"),
 }
 
+@font-face {
+  font-family: "Noto Sans JP";
+  src:
+    local("Noto Sans JP"),
+    url("NotoSansJP-Regular.otf") format("opentype"),
+    url("NotoSansJP-VariableFont_wght.ttf") format("truetype"),
+    url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap'),
+}
+
 :root {
   --color-tompedia: #825dab;
   --color-manaby: #f08301;
-  --line-width: 20px;
-}
 
-section {
+  font-family: 'Noto Sans JP', sans-serif;
+
   --line-width: 20px;
   border-left: var(--line-width) solid var(--color-tompedia);
   box-shadow: inset var(--line-width) 0 0 0 var(--color-manaby);
