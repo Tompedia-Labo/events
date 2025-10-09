@@ -28,13 +28,16 @@
 :root {
   --color-tompedia: #825dab;
   --color-manaby: #f08301;
+}
 
+section {
   font-family: 'Noto Sans JP', sans-serif;
 
   --line-width: 20px;
   border-left: var(--line-width) solid var(--color-tompedia);
   box-shadow: inset var(--line-width) 0 0 0 var(--color-manaby);
 }
+
 section::before {
   content: '';
   position: absolute;
@@ -53,12 +56,14 @@ span.eventName {
   font-weight: bold;
   color: var(--color-manaby);
 }
+
 span.eventWeb {
   color: var(--color-tompedia);
 }
-section:not([id='1']) > h1,
-section:not([id='1']) > h2,
-section:not([id='1']) > h3 {
+
+section:not([id='1'])>h1,
+section:not([id='1'])>h2,
+section:not([id='1'])>h3 {
   font-family: 'keifont', sans-serif;
   font-weight: normal;
   color: #000;
@@ -66,6 +71,15 @@ section:not([id='1']) > h3 {
   text-underline-offset: 16px;
 }
 
-.columns { display: flex; gap: 1rem; }
-.columns>div {flex:1}
-.result { border: 1px solid #ddd;}
+.columns {
+  display: flex;
+  gap: 1rem;
+}
+
+.columns>div {
+  flex: 1
+}
+
+.result {
+  border: 1px solid #ddd;
+}
