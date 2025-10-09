@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -21,15 +21,15 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: latest
+          cache: npm
 
-      - name: Install marp-cli
-        run: npm install -g @marp-team/marp-cli
+      - name: Install packages
+        run: npm ci
 
       - name: Convert .marp.md files
         run: |
-          for file in $(find . -name "*.marp.md"); do
-            marp --html --pdf "$file"
-          done
+          npm run build:pdf
+          npm run build:html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -37,7 +37,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./
+          path: ./public
 
       - name: Deploy to GitHub Pages
         id: deployment

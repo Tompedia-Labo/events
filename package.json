@@ -1,0 +1,16 @@
+{
+  "name": "events",
+  "scripts": {
+    "build:pdf": "find public -name \"*.marp.md\" -exec marp --pdf --pdfOutlines {} \\;",
+    "build:html": "find public -name \"*.marp.md\" -exec marp --html {} \\;"
+  },
+  "author": "Tompedia_Labo",
+  "homepage": "https://info.tompedia.jp",
+  "dependencies": {
+    "@marp-team/marp-cli": "^4.2.3"
+  },
+  "marp": {
+    "themeSet": "marp-themes",
+    "allowLocalFiles": true
+  }
+}
