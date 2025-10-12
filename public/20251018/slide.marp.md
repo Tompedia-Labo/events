@@ -685,9 +685,9 @@ VSCodeをインストールします。授業などでもう入れてある人�
 
 `index.html`をブラウザで開いて、どのように表示されるか確認しましょう。
 
--  VSCodeのLive Server拡張機能を使うと便利です。
--  左側の拡張機能アイコンをクリックし、「Live Server」で検索してインストールします。
--  `index.html`を右クリックして、「Open with Live Server」を選択すると、ブラウザでページが開きます。
+-  VSCodeのLive Preview拡張機能を使うと便利です。
+-  左側の拡張機能アイコンをクリックし、「Live Preview」で検索してインストールします。
+-  `index.html`を右クリックして、「Show Preview」を選択すると、ブラウザでページが開きます。
 
 ---
 

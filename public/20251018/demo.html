@@ -1,126 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="https://events.tompedia.jp/20251018/js/web-components.js" defer></script>
+  <script src="https://events.tompedia.jp/20251018/js/web-components.js"></script>
 </head>
+
 <body>
+  <style>
+    body {
+      font-family: "Noto Sans JP", Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
+
   <!-- ヘッダー -->
-<template id="app-header">
-  <style>
-    header {
-      background-color: #333;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-  </style>
-  <header>
-    <h1>素敵なLPのタイトル</h1>
-    <p>キャッチーなサブタイトル</p>
-  </header>
-</template>
+  <template id="app-header">
+    <style>
+      header {
+        background-color: #333;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
 
-<!-- ヒーローセクション -->
-<template id="hero-section">
-  <style>
-    .hero {
-      background-image: url('https://via.placeholder.com/1200x400');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 4rem 2rem;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 400px;
-    }
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .cta-button {
-      background-color: #ff6347;
-      color: white;
-      padding: 0.8rem 1.5rem;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-  </style>
-  <section class="hero">
-    <h2>未来を変えるプロダクト</h2>
-    <p>このプロダクトがあなたの日常をどう変えるか、魅力的な説明をここに書きます。</p>
-    <a href="#" class="cta-button">今すぐ試す</a>
-  </section>
-</template>
+      .header {
+        /* 横並び */
+        display: flex;
 
-<!-- 特徴セクション -->
-<template id="features-section">
-  <style>
-    .features {
-      padding: 2rem;
-      display: flex;
-      justify-content: space-around;
-      gap: 1rem;
-      text-align: center;
-    }
-    .feature-item {
-      flex-basis: 30%;
-    }
-    .feature-item img {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 1rem;
-    }
-  </style>
-  <section class="features">
-    <div class="feature-item">
-      <img src="https://via.placeholder.com/100" alt="特徴1">
-      <h3>特徴1</h3>
-      <p>革新的な機能についての説明です。</p>
-    </div>
-    <div class="feature-item">
-      <img src="https://via.placeholder.com/100" alt="特徴2">
-      <h3>特徴2</h3>
-      <p>使いやすいデザインについての説明です。</p>
-    </div>
-    <div class="feature-item">
-      <img src="https://via.placeholder.com/100" alt="特徴3">
-      <h3>特徴3</h3>
-      <p>安心のサポート体制についての説明です。</p>
-    </div>
-  </section>
-</template>
+        /* 両端に配置 */
+        justify-content: space-between;
 
-<!-- フッター -->
-<template id="app-footer">
-  <style>
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      position: relative;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
-  <footer>
-    <p>&copy; 2025 とんペディアハッカソン</p>
-  </footer>
-</template>
+        /* 縦位置を中央に揃える */
+        align-items: center;
+
+        margin-bottom: 16px;
+      }
+
+      .chip-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 6px 10px 5px 0;
+        background-color: #AACF53;
+        color: white;
+        border: none;
+        border-radius: 41px;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        /* underlineを消す */
+        cursor: pointer;
+        transition: background-color 0.2s, transform 0.1s;
+      }
+    </style>
+    <header>
+      <div class="header">
+        <img src="assets/manaby_横ロゴ.png" alt="manaby_横ロゴ" width="165" height="31">
+        <a href="https://works.manaby.co.jp/inquiry/" class="chip-btn">お問い合わせ</a>
+      </div>
+      <h1>素敵なLPのタイトル</h1>
+      <p>キャッチーなサブタイトル</p>
+    </header>
+  </template>
+
+  <!-- ヒーローセクション -->
+  <template id="hero-section">
+    <style>
+      .hero {
+        background-image: url('assets/ヒーロー１.jpg');
+        background-size: cover;
+        background-position: center;
+        color: #222;
+        padding: 4rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .cta-button {
+        display: block;
+        width: 200px;
+        background-color: #ff6347;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+    </style>
+    <section class="hero">
+      <h2>未来を変えるプロダクト</h2>
+      <p>このプロダクトがあなたの日常をどう変えるか、<br>魅力的な説明をここに書きます。</p>
+      <a href="#" class="cta-button">今すぐ試す</a>
+    </section>
+  </template>
+
+  <!-- 特徴セクション -->
+  <template id="features-section">
+    <style>
+      .features {
+        padding: 2rem;
+        display: flex;
+        justify-content: space-around;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .feature-item {
+        flex-basis: 30%;
+      }
+
+      .feature-item img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1rem;
+      }
+    </style>
+    <section class="features">
+      <div class="feature-item">
+        <img src="https://picsum.photos/800?1" alt="特徴1">
+        <h3>特徴1</h3>
+        <p>革新的な機能についての説明です。</p>
+      </div>
+      <div class="feature-item">
+        <img src="https://picsum.photos/800?2" alt="特徴2">
+        <h3>特徴2</h3>
+        <p>使いやすいデザインについての説明です。</p>
+      </div>
+      <div class="feature-item">
+        <img src="https://picsum.photos/800?3" alt="特徴3">
+        <h3>特徴3</h3>
+        <p>安心のサポート体制についての説明です。</p>
+      </div>
+    </section>
+  </template>
+
+  <!-- フッター -->
+  <template id="app-footer">
+    <style>
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+    <footer>
+      <p>&copy; 2025 とんペディアハッカソン</p>
+    </footer>
+  </template>
+
   <app-header></app-header>
   <hero-section></hero-section>
   <features-section></features-section>
   <app-footer></app-footer>
+
 </body>
+
 </html>
