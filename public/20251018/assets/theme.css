@@ -83,3 +83,16 @@ section:not([id='1'])>h3 {
 .result {
   border: 1px solid #ddd;
 }
+
+marp-pre {
+  position: relative;
+}
+
+/* marp-pre::after {
+  content: 'Copy';
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #000;
+} */
