@@ -612,18 +612,25 @@ JavaScriptの技術を使うと、**自分だけのHTMLタグ**を作ること�
 
 ---
 
-#### 1.  **VSCodeで`index.html`を作る**: `index.html`という名前でファイルを作成してください。これが、あなたのWebページの土台になります。
+#### 1.  VSCodeで`index.html`を作る
+
+`index.html`という名前でファイルを作成してください。これが、あなたのWebページの土台になります。
 
 ---
 
-#### 2.  **魔法のスクリプトを読み込む**: `index.html`の`<head>`タグの中に、以下の1行を書いてください。これが、部品（Webコンポーネント）を使うための魔法のスクリプトです。
-    ```html
-    <script src="https://events.tompedia.jp/20251018/js/web-components.js" defer></script>
-    ```
+#### 2.  魔法のスクリプトを読み込む
+
+`index.html`の`<head>`タグの中に、以下の1行を書いてください。これが、部品（Webコンポーネント）を使うための魔法のスクリプトです。
+
+```html
+<script src="https://events.tompedia.jp/20251018/js/web-components.js" defer></script>
+```
 
 ---
 
-#### 3. **部品カタログを読み込む**: [`components.html`](https://events.tompedia.jp/20251018/components.txt)に、LPで使える部品が`<template>`タグとしてたくさん用意されています。これを`index.html`で使えるようにするため、`components.html`の中身を全てコピーし、`index.html`の`<body>`タグのすぐ下に貼り付けてください。
+#### 3. 部品カタログを読み込む
+
+[`components.html`](https://events.tompedia.jp/20251018/components.txt)に、LPで使える部品が`<template>`タグとしてたくさん用意されています。これを`index.html`で使えるようにするため、`components.html`の中身を全てコピーし、`index.html`の`<body>`タグのすぐ下に貼り付けてください。
 
 ---
 
@@ -633,31 +640,43 @@ JavaScriptの技術を使うと、**自分だけのHTMLタグ**を作ること�
 
 ---
 
-#### 1.  **主要な部品を配置する**: `index.html`の`<body>`の下の方（貼り付けた`<template>`群の後）に、以下のようにお好きな部品を配置してみましょう。
-    ```html
-    <body>
-      <!-- (ここにcomponents.htmlの中身を貼り付けた) -->
+#### 1.  主要な部品を配置する
 
-      <!-- ▼▼ ページのコンテンツを組み立てる場所 ▼▼ -->
-      <app-header></app-header>
-      <hero-section></hero-section>
-      <features-section></features-section>
-      <app-footer></app-footer>
-      <!-- ▲▲ ここまで ▲▲ -->
-    </body>
-    ```
+`index.html`の`<body>`の下の方（貼り付けた`<template>`群の後）に、以下のようにお好きな部品を配置してみましょう。
+
+```html
+<body>
+  <!-- (ここにcomponents.htmlの中身を貼り付けた) -->
+
+  <!-- ▼▼ ページのコンテンツを組み立てる場所 ▼▼ -->
+  <app-header></app-header>
+  <hero-section></hero-section>
+  <features-section></features-section>
+  <app-footer></app-footer>
+  <!-- ▲▲ ここまで ▲▲ -->
+</body>
+```
 
 ---
 
-#### 2.  **ブラウザで確認**: `index.html`をブラウザで開いて、どのように表示されるか確認しましょう。
+#### 2.  ブラウザで確認
+
+`index.html`をブラウザで開いて、どのように表示されるか確認しましょう。
+
+-  VSCodeのLive Server拡張機能を使うと便利です。
+-  左側の拡張機能アイコンをクリックし、「Live Server」で検索してインストールします。
+-  `index.html`を右クリックして、「Open with Live Server」を選択すると、ブラウザでページが開きます。
 
 ---
 
-#### 3.  **コンテンツを自分だけのものに！**: 貼り付けた`<template>`の中身を直接編集して、文章や画像を変えてみましょう。
-    -   **文字を変える**: `<h1>`や`<p>`タグに囲まれた文章を好きな言葉に変えてみましょう。
-    -   **画像を変える**: `<img>`タグの`src`属性のURLを、好きな画像のURLに変えてみましょう。
-        -   `https://source.unsplash.com/random/800x600` のようなランダムな画像URLで試すのも面白いです。
-        -   自分で用意した画像を`src/demo/images`フォルダなどに入れて、相対パスで指定することもできます。(例: `src="images/my-photo.jpg"`)
+#### 3.  コンテンツを自分だけのものに！
+
+貼り付けた`<template>`の中身を直接編集して、文章や画像を変えてみましょう。
+
+-   **文字を変える**: `<h1>`や`<p>`タグに囲まれた文章を好きな言葉に変えてみましょう。
+-   **画像を変える**: `<img>`タグの`src`属性のURLを、好きな画像のURLに変えてみましょう。
+  -   `https://source.unsplash.com/random/800x600` のようなランダムな画像URLで試すのも面白いです。
+    -   自分で用意した画像を`src/demo/images`フォルダなどに入れて、相対パスで指定することもできます。(例: `src="images/my-photo.jpg"`)
 
 ---
 
@@ -680,7 +699,7 @@ JavaScriptの技術を使うと、**自分だけのHTMLタグ**を作ること�
 -   `padding`: 要素の「内側」の余白です。窮屈な印象をなくすのに役立ちます。
 -   `margin`: 要素の「外側」の余白です。要素と要素の間の距離を調整します。
 -   `width` / `height`: 要素の幅や高さを指定します。
--
+
 ---
 
 ### 3.3. レイアウトを操る (Flexbox)
@@ -698,13 +717,14 @@ JavaScriptの技術を使うと、**自分だけのHTMLタグ**を作ること�
 ユーザーがマウスを乗せたときに見た目が変わったらかっこいいですね。
 
 -   `.cta-button`のスタイルに、以下を追加してみましょう。ボタンにマウスを乗せると色が変わります。
-    ```css
-    .cta-button:hover {
-      background-color: #ff8a65; /* 少し明るい色に */
-      transform: scale(1.05);   /* 少しだけ大きくする */
-      transition: all 0.2s ease;  /* なめらかな変化のアニメーション */
-    }
-    ```
+
+```css
+.cta-button:hover {
+  background-color: #ff8a65; /* 少し明るい色に */
+  transform: scale(1.05);   /* 少しだけ大きくする */
+  transition: all 0.2s ease;  /* なめらかな変化のアニメーション */
+}
+```
 
 ---
 
@@ -745,11 +765,15 @@ JavaScriptの技術を使うと、**自分だけのHTMLタグ**を作ること�
 
 ---
 
-#### 2.  **呼び出す**: `<body>`の好きな場所に、`<testimonial-section></testimonial-section>`と書いて呼び出します。
+#### 2.  呼び出す
+
+`<body>`の好きな場所に、`<testimonial-section></testimonial-section>`と書いて呼び出します。
 
 ---
 
-#### 3.  **スタイリング**: あとはSTEP 3と同じように、自由にスタイルを調整してみましょう！
+#### 3.  スタイリング
+
+あとはSTEP 3と同じように、自由にスタイルを調整してみましょう！
 
 ---
 
