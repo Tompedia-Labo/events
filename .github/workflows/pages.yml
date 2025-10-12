@@ -28,7 +28,6 @@ jobs:
 
       - name: Convert .marp.md files
         run: |
-          npm run build:pdf
           npm run build:html
 
       - name: Setup Pages
