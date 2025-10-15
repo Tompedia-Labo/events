@@ -52,7 +52,8 @@
         }
     </style>
     <header>
-        <h1><img src="images/manaby_横ロゴ.png" alt="manaby" width="165" height="31"></h1>
+        <h1><img src="https://events.tompedia.jp/20251018/assets/manaby_横ロゴ.png" alt="manaby" width="165" height="31">
+        </h1>
         <a href="https://works.manaby.co.jp/inquiry/" class="chip-btn">お問い合わせ</a>
     </header>
 </template>
@@ -96,7 +97,8 @@
         }
     </style>
     <header>
-        <h1><img src="images/manaby_横ロゴ.png" alt="manaby" width="165" height="31"></h1>
+        <h1><img src="https://events.tompedia.jp/20251018/assets/manaby_横ロゴ.png" alt="manaby" width="165" height="31">
+        </h1>
         <a href="https://works.manaby.co.jp/inquiry/" class="chip-btn">お問い合わせ</a>
     </header>
 </template>
@@ -106,7 +108,7 @@
     <style>
         .hero {
             /* 背景を画像に */
-            background-image: url('images/ヒーロー１.jpg');
+            background-image: url('https://events.tompedia.jp/20251018/assets/ヒーロー１.jpg');
             background-size: cover;
             background-position: center;
 
@@ -143,7 +145,7 @@
     <style>
         .hero {
             /* 背景を画像に */
-            background-image: url('images/ヒーロー２.jpg');
+            background-image: url('https://events.tompedia.jp/20251018/assets/ヒーロー２.jpg');
             background-size: cover;
             background-position: center;
 
@@ -180,7 +182,7 @@
     <style>
         .hero {
             /* 背景を画像に */
-            background-image: url('images/ヒーロー３.jpg');
+            background-image: url('https://events.tompedia.jp/20251018/assets/ヒーロー３.jpg');
             background-size: cover;
             background-position: center;
 
@@ -255,7 +257,7 @@
             left: 45px;
             width: 24px;
             height: 24px;
-            mask: url('images/吹き出しマーク.svg') no-repeat top / cover;
+            mask: url('https://events.tompedia.jp/20251018/assets/吹き出しマーク.svg') no-repeat top / cover;
             background: #FFF6BE;
         }
 
@@ -297,7 +299,7 @@
         <div class="serif">
             新しい場所でも<br /><span>また失敗するんじゃないかな…</span>
         </div>
-        <img src="images/悩む男性.png" alt="悩む男性">
+        <img src="https://events.tompedia.jp/20251018/assets/悩む男性.png" alt="悩む男性">
     </section>
 </template>
 
@@ -392,7 +394,7 @@
     <div class="benefit">
         <div class="number">01</div>
         <h3>在宅で学ぶ・働く選択肢</h3>
-        <img src="images/リモートワークする男性.jpg" alt="リモートワークする男性">
+        <img src="https://events.tompedia.jp/20251018/assets/リモートワークする男性.jpg" alt="リモートワークする男性">
         <div class="content">
             <p>それぞれの状況に応じ、在宅と通所を組み合わせながら自分のペースに合わせて無理なく学習を進めることができます。</p>
             <p>※自治体に申請し認められた場合のみ、在宅訓練が可能です。</p>
@@ -444,7 +446,7 @@
     <div class="benefit">
         <div class="number">02</div>
         <h3>独自のeラーニングでITスキルアップ</h3>
-        <img src="images/e-learningする女性.jpg" alt="e-learningする女性">
+        <img src="https://events.tompedia.jp/20251018/assets/e-learningする女性.jpg" alt="e-learningする女性">
         <div class="content">
             <p>就労移行支援manabyでは独自のeラーニングを活用し、ITスキルやビジネスマナーを学習することができます。個別学習が中心のため、体調に合わせて自分のペースで進められます。</p>
         </div>
