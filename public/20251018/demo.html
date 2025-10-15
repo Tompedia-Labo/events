@@ -1,178 +1,493 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://events.tompedia.jp/20251018/js/web-components.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://events.tompedia.jp/20251018/js/web-components.js"></script>
+
+    <style>
+        body {
+            font-family: "Noto Sans JP", Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #444444;
+        }
+    </style>
+
+    <!-- ヘッダー1 -->
+    <template id="app-header1">
+        <style>
+            header {
+                /* 横並び */
+                display: flex;
+
+                /* 両端に配置 */
+                justify-content: space-between;
+
+                /* 縦位置を中央に揃える */
+                align-items: center;
+
+                /* 内側の余白を設定 */
+                padding: 16px;
+            }
+
+            .chip-btn {
+                /* 内側の余白を設定 (上下 左右) */
+                padding: 10px 20px;
+
+                /* 外側の余白を設定 (上 右 下 左) */
+                margin: 6px 10px 5px 0;
+
+                /* 背景色を緑に */
+                background-color: #AACF53;
+
+                /* 文字色を白に */
+                color: white;
+
+                /* 角を丸く */
+                border-radius: 41px;
+
+                /* フォントサイズを16px, 太字に */
+                font-size: 16px;
+                font-weight: bold;
+
+                /* underlineを消す */
+                text-decoration: none;
+            }
+        </style>
+        <header>
+            <h1><img src="images/manaby_横ロゴ.png" alt="manaby" width="165" height="31"></h1>
+            <a href="https://works.manaby.co.jp/inquiry/" class="chip-btn">お問い合わせ</a>
+        </header>
+    </template>
+
+    <!-- ヘッダー2 -->
+    <template id="app-header2">
+        <style>
+            header {
+                /* 横並び */
+                display: flex;
+
+                /* 両端に配置 */
+                justify-content: space-between;
+
+                /* 縦位置を中央に揃える */
+                align-items: center;
+
+                /* 内側の余白を設定 */
+                padding: 16px;
+            }
+
+            .chip-btn {
+                /* 内側の余白を設定 (上下 左右) */
+                padding: 10px 20px;
+
+                /* 外側の余白を設定 (上 右 下 左) */
+                margin: 6px 10px 5px 0;
+
+                /* 背景色を緑に */
+                background-color: #F08300;
+
+                /* 文字色を白に */
+                color: white;
+
+                /* フォントサイズを16px, 太字に */
+                font-size: 16px;
+                font-weight: bold;
+
+                /* underlineを消す */
+                text-decoration: none;
+            }
+        </style>
+        <header>
+            <h1><img src="images/manaby_横ロゴ.png" alt="manaby" width="165" height="31"></h1>
+            <a href="https://works.manaby.co.jp/inquiry/" class="chip-btn">お問い合わせ</a>
+        </header>
+    </template>
+
+    <!-- ヒーローセクション1 -->
+    <template id="hero-section1">
+        <style>
+            .hero {
+                /* 背景を画像に */
+                background-image: url('images/ヒーロー１.jpg');
+                background-size: cover;
+                background-position: center;
+
+                height: 53vw;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .hero p {
+                margin-top: 14vw;
+                margin-left: 6vw;
+
+                font-size: 5vw;
+                line-height: 6vw;
+            }
+
+            .hero p mark {
+                background-color: transparent;
+                font-weight: bold;
+                color: #F08300;
+                background-color: white;
+            }
+        </style>
+        <section class="hero">
+            <p><mark>うまく生きるのではなく、<br />らしく生きるための学びを。</mark></p>
+        </section>
+    </template>
+
+    <!-- ヒーローセクション2 -->
+    <template id="hero-section2">
+        <style>
+            .hero {
+                /* 背景を画像に */
+                background-image: url('images/ヒーロー２.jpg');
+                background-size: cover;
+                background-position: center;
+
+                height: 53vw;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-end;
+            }
+
+            .hero p {
+                margin-bottom: 3vw;
+                margin-right: 6vw;
+
+                font-size: 5vw;
+                line-height: 6vw;
+            }
+
+            .hero p mark {
+                background-color: transparent;
+                font-weight: bold;
+                color: white;
+                background-color: #F08300;
+            }
+        </style>
+        <section class="hero">
+            <p><mark>自分らしく働ける社会へ、<br />人と組織の可能性を広げる。</mark></p>
+        </section>
+    </template>
+
+    <!-- ヒーローセクション3 -->
+    <template id="hero-section3">
+        <style>
+            .hero {
+                /* 背景を画像に */
+                background-image: url('images/ヒーロー３.jpg');
+                background-size: cover;
+                background-position: center;
+
+                height: 53vw;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-start;
+            }
+
+            .hero p {
+                margin-bottom: 17vw;
+                margin-left: 6vw;
+
+                font-size: 5vw;
+                line-height: 6vw;
+            }
+
+            .hero p mark {
+                background-color: transparent;
+                font-weight: bold;
+                color: #F08300;
+                background-color: transparent;
+            }
+        </style>
+        <section class="hero">
+            <p><mark>学びとは<br />自分らしく生きる<br />選択肢をつくること</mark></p>
+        </section>
+    </template>
+
+    <!-- 共感・問題提起 -->
+    <template id="empathy-section">
+        <style>
+            .empathy {
+                padding: 2rem 10%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .empathy h2 {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .serif {
+                position: relative;
+
+                padding: 10px 19px;
+
+                align-self: flex-start;
+
+                background: #FFF6BE;
+
+                border-radius: 30px;
+
+                font-size: 14px;
+                font-weight: bold;
+                line-height: 21px;
+                color: #444444;
+            }
+
+            /* 吹き出しマーク。疑似要素を使って作っている */
+            .serif::after {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: -24px;
+                left: 45px;
+                width: 24px;
+                height: 24px;
+                mask: url('images/吹き出しマーク.svg') no-repeat top / cover;
+                background: #FFF6BE;
+            }
+
+            .serif span {
+                text-decoration: underline #F08300 3px;
+                text-underline-offset: 0px;
+            }
+
+            .serif.right {
+                align-self: flex-end;
+
+                background: #AACF53;
+                color: white;
+            }
+
+            .serif.right::after {
+                left: auto;
+                right: 45px;
+                transform: scaleX(-1);
+                background: #AACF53;
+            }
+
+            .serif.right span {
+                text-decoration-color: #3A5203;
+            }
+
+            img {
+                width: 50vw;
+            }
+        </style>
+        <section class="empathy">
+            <h2>こんなお悩みありませんか？</h2>
+            <div class="serif">
+                自分は社会で<br /><span>やっていけるのかな…</span>
+            </div>
+            <div class="serif right">
+                できないことは分かったけど<br /><span>できることが分からない…</span>
+            </div>
+            <div class="serif">
+                新しい場所でも<br /><span>また失敗するんじゃないかな…</span>
+            </div>
+            <img src="images/悩む男性.png" alt="悩む男性">
+        </section>
+    </template>
+
+    <template id="benefit-title">
+        <style>
+            p {
+                padding-top: 16px;
+                padding-bottom: 54px;
+
+                text-align: center;
+
+                background: #AACF53;
+
+                color: white;
+
+                font-size: 18px;
+                line-height: 30px;
+                font-weight: bold;
+
+                clip-path: polygon(0 0,
+                        100% 0,
+                        100% calc(100% - 54px),
+                        50% 100%,
+                        0 calc(100% - 54px));
+            }
+
+            em {
+                display: inline-block;
+
+                padding: 0 6px;
+
+                height: 40px;
+                line-height: 40px;
+
+                background: #F08300;
+
+                font-size: 20px;
+                font-style: normal;
+            }
+
+            em span {
+                font-size: 24px;
+            }
+        </style>
+        <p>
+            一人ひとりが自分らしい働き方を<br />見つけるための<br />
+            <em><span>就労移行支援manaby</span>の<span>特徴</span></em>
+        </p>
+    </template>
+
+    <template id="benefit-1">
+        <style>
+            .benefit {
+                margin-top: 48px;
+                padding-top: 48px;
+                position: relative;
+                background: #E6F1CB;
+            }
+
+            .number {
+                position: absolute;
+                top: -48px;
+                left: 16px;
+
+                font-size: 64px;
+                line-height: 96px;
+                font-weight: bold;
+            }
+
+            h3 {
+                margin-left: 24px;
+                font-size: 20px;
+                font-weight: bold;
+
+                text-decoration: underline #9EAE77 3px;
+                text-underline-offset: 0px;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            .content {
+                margin: 24px;
+                font-size: 16px;
+            }
+
+            .content p {
+                margin: 0;
+            }
+        </style>
+        <div class="benefit">
+            <div class="number">01</div>
+            <h3>在宅で学ぶ・働く選択肢</h3>
+            <img src="images/リモートワークする男性.jpg" alt="リモートワークする男性">
+            <div class="content">
+                <p>それぞれの状況に応じ、在宅と通所を組み合わせながら自分のペースに合わせて無理なく学習を進めることができます。</p>
+                <p>※自治体に申請し認められた場合のみ、在宅訓練が可能です。</p>
+            </div>
+        </div>
+    </template>
+
+    <template id="benefit-2">
+        <style>
+            .benefit {
+                margin-top: 48px;
+                padding-top: 48px;
+                position: relative;
+                background: #E6F1CB;
+            }
+
+            .number {
+                position: absolute;
+                top: -48px;
+                left: 16px;
+
+                font-size: 64px;
+                line-height: 96px;
+                font-weight: bold;
+            }
+
+            h3 {
+                margin-left: 24px;
+                font-size: 20px;
+                font-weight: bold;
+
+                text-decoration: underline #9EAE77 3px;
+                text-underline-offset: 0px;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            .content {
+                margin: 24px;
+                font-size: 16px;
+            }
+
+            .content p {
+                margin: 0;
+            }
+        </style>
+        <div class="benefit">
+            <div class="number">02</div>
+            <h3>独自のeラーニングでITスキルアップ</h3>
+            <img src="images/e-learningする女性.jpg" alt="e-learningする女性">
+            <div class="content">
+                <p>就労移行支援manabyでは独自のeラーニングを活用し、ITスキルやビジネスマナーを学習することができます。個別学習が中心のため、体調に合わせて自分のペースで進められます。</p>
+            </div>
+        </div>
+    </template>
+
+    <!-- フッター -->
+    <template id="app-footer">
+        <style>
+            footer {
+                background-color: #333;
+                color: white;
+                text-align: center;
+                padding: 1rem;
+                position: relative;
+                bottom: 0;
+                width: 100%;
+            }
+        </style>
+        <footer>
+            <p>&copy; 2025 とんペディアハッカソン</p>
+        </footer>
+    </template>
 </head>
 
 <body>
-  <style>
-    body {
-      font-family: "Noto Sans JP", Arial, Helvetica, sans-serif;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-  </style>
-
-  <!-- ヘッダー -->
-  <template id="app-header">
-    <style>
-      header {
-        background-color: #333;
-        color: white;
-        padding: 1rem;
-        text-align: center;
-      }
-
-      .header {
-        /* 横並び */
-        display: flex;
-
-        /* 両端に配置 */
-        justify-content: space-between;
-
-        /* 縦位置を中央に揃える */
-        align-items: center;
-
-        margin-bottom: 16px;
-      }
-
-      .chip-btn {
-        display: inline-block;
-        padding: 10px 20px;
-        margin: 6px 10px 5px 0;
-        background-color: #AACF53;
-        color: white;
-        border: none;
-        border-radius: 41px;
-        font-size: 16px;
-        font-weight: 700;
-        text-decoration: none;
-        /* underlineを消す */
-        cursor: pointer;
-        transition: background-color 0.2s, transform 0.1s;
-      }
-    </style>
-    <header>
-      <div class="header">
-        <img src="assets/manaby_横ロゴ.png" alt="manaby_横ロゴ" width="165" height="31">
-        <a href="https://works.manaby.co.jp/inquiry/" class="chip-btn">お問い合わせ</a>
-      </div>
-      <h1>素敵なLPのタイトル</h1>
-      <p>キャッチーなサブタイトル</p>
-    </header>
-  </template>
-
-  <!-- ヒーローセクション -->
-  <template id="hero-section">
-    <style>
-      .hero {
-        background-image: url('assets/ヒーロー１.jpg');
-        background-size: cover;
-        background-position: center;
-        color: #222;
-        padding: 4rem 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: left;
-      }
-
-      .hero h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-      }
-
-      .cta-button {
-        display: block;
-        width: 200px;
-        background-color: #ff6347;
-        color: white;
-        padding: 0.8rem 1.5rem;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-      }
-    </style>
-    <section class="hero">
-      <h2>未来を変えるプロダクト</h2>
-      <p>このプロダクトがあなたの日常をどう変えるか、<br>魅力的な説明をここに書きます。</p>
-      <a href="#" class="cta-button">今すぐ試す</a>
-    </section>
-  </template>
-
-  <!-- 特徴セクション -->
-  <template id="features-section">
-    <style>
-      .features {
-        padding: 2rem;
-        display: flex;
-        justify-content: space-around;
-        gap: 1rem;
-        text-align: center;
-      }
-
-      .feature-item {
-        flex-basis: 30%;
-      }
-
-      .feature-item img {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 1rem;
-      }
-    </style>
-    <section class="features">
-      <div class="feature-item">
-        <img src="https://picsum.photos/800?1" alt="特徴1">
-        <h3>特徴1</h3>
-        <p>革新的な機能についての説明です。</p>
-      </div>
-      <div class="feature-item">
-        <img src="https://picsum.photos/800?2" alt="特徴2">
-        <h3>特徴2</h3>
-        <p>使いやすいデザインについての説明です。</p>
-      </div>
-      <div class="feature-item">
-        <img src="https://picsum.photos/800?3" alt="特徴3">
-        <h3>特徴3</h3>
-        <p>安心のサポート体制についての説明です。</p>
-      </div>
-    </section>
-  </template>
-
-  <!-- フッター -->
-  <template id="app-footer">
-    <style>
-      footer {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 1rem;
-        position: relative;
-        bottom: 0;
-        width: 100%;
-      }
-    </style>
-    <footer>
-      <p>&copy; 2025 とんペディアハッカソン</p>
-    </footer>
-  </template>
-
-  <app-header></app-header>
-  <hero-section></hero-section>
-  <features-section></features-section>
-  <app-footer></app-footer>
-
+    <app-header1></app-header1>
+    <!--app-header2></app-header2-->
+    <hero-section1></hero-section1>
+    <hero-section2></hero-section2>
+    <hero-section3></hero-section3>
+    <empathy-section></empathy-section>
+    <benefit-title></benefit-title>
+    <benefit-1></benefit-1>
+    <benefit-2></benefit-2>
 </body>
 
 </html>
