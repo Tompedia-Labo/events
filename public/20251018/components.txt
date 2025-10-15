@@ -1,8 +1,10 @@
 <script src="https://events.tompedia.jp/20251018/js/web-components.js"></script>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&display=swap');
+
     body {
-        font-family: "Noto Sans JP", Arial, Helvetica, sans-serif;
+        font-family: "IBM Plex Sans JP", "Noto Sans JP", Arial, Helvetica, sans-serif;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -350,7 +352,7 @@
     </p>
 </template>
 
-<template id="benefit-1">
+<template id="benefit-content">
     <style>
         .benefit {
             margin-top: 48px;
@@ -378,7 +380,7 @@
             text-underline-offset: 0px;
         }
 
-        img {
+        .benefit ::slotted(img) {
             width: 100%;
         }
 
@@ -392,64 +394,214 @@
         }
     </style>
     <div class="benefit">
-        <div class="number">01</div>
-        <h3>在宅で学ぶ・働く選択肢</h3>
-        <img src="https://events.tompedia.jp/20251018/assets/リモートワークする男性.jpg" alt="リモートワークする男性">
+        <div class="number">
+            <slot name="number">00</slot>
+        </div>
+        <h3>
+            <slot name="title">ベネフィット</slot>
+        </h3>
+        <slot name="img"><img src="https://events.tompedia.jp/20251018/assets/リモートワークする男性.jpg" alt="リモートワークする男性"></slot>
         <div class="content">
-            <p>それぞれの状況に応じ、在宅と通所を組み合わせながら自分のペースに合わせて無理なく学習を進めることができます。</p>
-            <p>※自治体に申請し認められた場合のみ、在宅訓練が可能です。</p>
+            <slot>
+                <p>本文</p>
+            </slot>
         </div>
     </div>
 </template>
 
-<template id="benefit-2">
+<template id="section-title">
     <style>
-        .benefit {
-            margin-top: 48px;
-            padding-top: 48px;
-            position: relative;
-            background: #E6F1CB;
+        h2 {
+            display: block;
+            width: 100%;
+
+            margin: 0;
+            padding: 20px 0;
+
+            background: #AACF53;
+            color: white;
+
+            text-align: center;
+
+            font-size: 24px;
+        }
+    </style>
+
+    <h2>
+        <slot>タイトル</slot>
+    </h2>
+</template>
+
+<template id="user-review">
+    <style>
+        .user-review {
+            padding: 10px 16px;
         }
 
-        .number {
-            position: absolute;
-            top: -48px;
-            left: 16px;
-
-            font-size: 64px;
-            line-height: 96px;
-            font-weight: bold;
-        }
-
-        h3 {
-            margin-left: 24px;
-            font-size: 20px;
-            font-weight: bold;
-
-            text-decoration: underline #9EAE77 3px;
-            text-underline-offset: 0px;
-        }
-
-        img {
+        .user-review> ::slotted(img) {
             width: 100%;
         }
 
         .content {
-            margin: 24px;
-            font-size: 16px;
+            padding-top: 26px;
+            background: #E6F1CB;
+
+            padding: 8px;
+
+            clip-path: polygon(50% 0,
+                    calc(50% + 26px) 26px,
+                    100% 26px,
+                    100% 100%,
+                    0 100%,
+                    0 26px,
+                    calc(50% - 26px) 26px);
         }
 
-        .content p {
+        .content h3 {
+            display: inline-block;
+            width: 100%;
+
+            padding-top: 16px;
+
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .content> ::slotted(*) {
+            margin: 0;
+            font-size: 16px;
+        }
+    </style>
+    <div class="user-review">
+        <slot name="img"><img src="https://events.tompedia.jp/20251018/assets/pc作業おじさん.jpg" alt="pc作業"></slot>
+        <div class="content">
+            <h3>
+                <slot name="title">利用者の声見出し</slot>
+            </h3>
+            <slot>本文</slot>
+        </div>
+    </div>
+</template>
+
+<template id="support-point">
+    <style>
+        .content {
+            position: relative;
+
+            margin: 65px 16px 16px;
+            padding: 65px 16px 23px;
+
+            background: white;
+
+            border: 1px solid black;
+            border-radius: 33px;
+        }
+
+        .number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: absolute;
+            top: -50px;
+            left: calc(50% - 50px);
+
+            width: 100px;
+            height: 100px;
+
+            border-radius: 50%;
+
+            background: #AACF53;
+        }
+
+        .number-content {
+            margin: auto;
+            font-size: 24px;
+
+            text-align: center;
+        }
+
+        .number-content ::slotted(*) {
+            font-size: 48px;
+            line-height: 48px;
+        }
+
+        h3 {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .content> ::slotted(*) {
+            font-size: 16px;
             margin: 0;
         }
     </style>
-    <div class="benefit">
-        <div class="number">02</div>
-        <h3>独自のeラーニングでITスキルアップ</h3>
-        <img src="https://events.tompedia.jp/20251018/assets/e-learningする女性.jpg" alt="e-learningする女性">
-        <div class="content">
-            <p>就労移行支援manabyでは独自のeラーニングを活用し、ITスキルやビジネスマナーを学習することができます。個別学習が中心のため、体調に合わせて自分のペースで進められます。</p>
+
+    <div class="content">
+        <div class="number">
+            <div class="number-content">
+                point<br />
+                <slot name="number">00</slot>
+            </div>
         </div>
+        <h3>
+            <slot name="title">タイトル</slot>
+        </h3>
+        <slot>本文</slot>
+    </div>
+</template>
+
+<template id="faq-title">
+    <style>
+        .faq-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .serif {
+            position: relative;
+
+            padding: 0 6px;
+
+            width: 123px;
+            height: 32px;
+            line-height: 32px;
+
+            background: #AACF53;
+
+            text-align: center;
+
+            border-radius: 16px;
+
+            font-size: 20px;
+            font-style: normal;
+        }
+
+        .serif::after {
+            content: '';
+
+            position: absolute;
+            bottom: -24px;
+            right: 24px;
+
+            width: 24px;
+            height: 24px;
+            background: #AACF53;
+            mask: url('https://events.tompedia.jp/20251018/assets/吹き出しマーク.svg') no-repeat top / cover;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+
+    <div class="faq-title">
+        <div class="serif">FAQ</div>
+        <h2>
+            <slot>よくある質問</slot>
+        </h2>
     </div>
 </template>
 

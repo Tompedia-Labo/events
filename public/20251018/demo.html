@@ -9,8 +9,10 @@
   <script src="https://events.tompedia.jp/20251018/js/web-components.js"></script>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&display=swap');
+
     body {
-      font-family: "Noto Sans JP", Arial, Helvetica, sans-serif;
+      font-family: "IBM Plex Sans JP", "Noto Sans JP", Arial, Helvetica, sans-serif;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -358,7 +360,7 @@
     </p>
   </template>
 
-  <template id="benefit-1">
+  <template id="benefit-content">
     <style>
       .benefit {
         margin-top: 48px;
@@ -386,7 +388,7 @@
         text-underline-offset: 0px;
       }
 
-      img {
+      .benefit ::slotted(img) {
         width: 100%;
       }
 
@@ -400,64 +402,212 @@
       }
     </style>
     <div class="benefit">
-      <div class="number">01</div>
-      <h3>在宅で学ぶ・働く選択肢</h3>
-      <img src="https://events.tompedia.jp/20251018/assets/リモートワークする男性.jpg" alt="リモートワークする男性">
+      <div class="number">
+        <slot name="number">00</slot>
+      </div>
+      <h3>
+        <slot name="title">ベネフィット</slot>
+      </h3>
+      <slot name="img"><img src="https://events.tompedia.jp/20251018/assets/リモートワークする男性.jpg" alt="リモートワークする男性"></slot>
       <div class="content">
-        <p>それぞれの状況に応じ、在宅と通所を組み合わせながら自分のペースに合わせて無理なく学習を進めることができます。</p>
-        <p>※自治体に申請し認められた場合のみ、在宅訓練が可能です。</p>
+        <slot>
+          <p>本文</p>
+        </slot>
       </div>
     </div>
   </template>
 
-  <template id="benefit-2">
+  <template id="section-title">
     <style>
-      .benefit {
-        margin-top: 48px;
-        padding-top: 48px;
-        position: relative;
-        background: #E6F1CB;
+      h2 {
+        display: block;
+        width: 100%;
+
+        margin: 0;
+        padding: 20px 0;
+
+        background: #AACF53;
+        color: white;
+
+        text-align: center;
+
+        font-size: 24px;
+      }
+    </style>
+
+    <h2>
+      <slot>タイトル</slot>
+    </h2>
+  </template>
+
+  <template id="user-review">
+    <style>
+      .user-review {
+        padding: 10px 16px;
       }
 
-      .number {
-        position: absolute;
-        top: -48px;
-        left: 16px;
-
-        font-size: 64px;
-        line-height: 96px;
-        font-weight: bold;
-      }
-
-      h3 {
-        margin-left: 24px;
-        font-size: 20px;
-        font-weight: bold;
-
-        text-decoration: underline #9EAE77 3px;
-        text-underline-offset: 0px;
-      }
-
-      img {
+      .user-review> ::slotted(img) {
         width: 100%;
       }
 
       .content {
-        margin: 24px;
-        font-size: 16px;
+        padding-top: 26px;
+        background: #E6F1CB;
+
+        padding: 8px;
+
+        clip-path: polygon(50% 0,
+            calc(50% + 26px) 26px,
+            100% 26px,
+            100% 100%,
+            0 100%,
+            0 26px,
+            calc(50% - 26px) 26px);
       }
 
-      .content p {
+      .content h3 {
+        display: inline-block;
+        width: 100%;
+
+        padding-top: 16px;
+
+        text-align: center;
+        font-size: 18px;
+      }
+
+      .content> ::slotted(*) {
+        margin: 0;
+        font-size: 16px;
+      }
+    </style>
+    <div class="user-review">
+      <slot name="img"><img src="https://events.tompedia.jp/20251018/assets/pc作業おじさん.jpg" alt="pc作業"></slot>
+      <div class="content">
+        <h3>
+          <slot name="title">利用者の声見出し</slot>
+        </h3>
+        <slot>本文</slot>
+      </div>
+    </div>
+  </template>
+
+  <template id="support-point">
+    <style>
+      .content {
+        position: relative;
+
+        margin: 65px 16px 16px;
+        padding: 65px 16px 23px;
+
+        background: white;
+
+        border: 1px solid black;
+        border-radius: 33px;
+      }
+
+      .number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        top: -50px;
+        left: calc(50% - 50px);
+
+        width: 100px;
+        height: 100px;
+
+        border-radius: 50%;
+
+        background: #AACF53;
+      }
+
+      .number-content {
+        margin: auto;
+        font-size: 24px;
+
+        text-align: center;
+      }
+
+      .number-content ::slotted(*) {
+        font-size: 48px;
+        line-height: 48px;
+      }
+
+      h3 {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .content> ::slotted(*) {
+        font-size: 16px;
         margin: 0;
       }
     </style>
-    <div class="benefit">
-      <div class="number">02</div>
-      <h3>独自のeラーニングでITスキルアップ</h3>
-      <img src="https://events.tompedia.jp/20251018/assets/e-learningする女性.jpg" alt="e-learningする女性">
-      <div class="content">
-        <p>就労移行支援manabyでは独自のeラーニングを活用し、ITスキルやビジネスマナーを学習することができます。個別学習が中心のため、体調に合わせて自分のペースで進められます。</p>
+
+    <div class="content">
+      <div class="number">
+        <div class="number-content">
+          point<br />
+          <slot name="number">00</slot>
+        </div>
       </div>
+      <h3>
+        <slot name="title">タイトル</slot>
+      </h3>
+      <slot>本文</slot>
+    </div>
+  </template>
+
+  <template id="faq-title">
+    <style>
+      .faq-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .serif {
+        position: relative;
+
+        padding: 0 6px;
+
+        width: 123px;
+        height: 32px;
+        line-height: 32px;
+
+        background: #AACF53;
+
+        text-align: center;
+
+        border-radius: 16px;
+
+        font-size: 20px;
+        font-style: normal;
+      }
+
+      .serif::after {
+        content: '';
+
+        position: absolute;
+        bottom: -24px;
+        right: 24px;
+
+        width: 24px;
+        height: 24px;
+        background: #AACF53;
+        mask: url('https://events.tompedia.jp/20251018/assets/吹き出しマーク.svg') no-repeat top / cover;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 24px;
+      }
+    </style>
+
+    <div class="faq-title">
+      <div class="serif">FAQ</div>
+      <h2><slot>よくある質問</slot></h2>
     </div>
   </template>
 
@@ -481,6 +631,12 @@
 </head>
 
 <body>
+  <style>
+    .filled {
+      background: #E6F1CB;
+    }
+  </style>
+
   <app-header1></app-header1>
   <!--app-header2></app-header2-->
   <hero-section1></hero-section1>
@@ -488,8 +644,67 @@
   <hero-section3></hero-section3>
   <empathy-section></empathy-section>
   <benefit-title></benefit-title>
-  <benefit-1></benefit-1>
-  <benefit-2></benefit-2>
+  <benefit-content>
+    <span slot="number">01</span>
+    <span slot="title">在宅で学ぶ・働く選択肢</span>
+    <img slot="img" src="https://events.tompedia.jp/20251018/assets/リモートワークする男性.jpg" alt="リモートワークする男性">
+    <p>それぞれの状況に応じ、在宅と通所を組み合わせながら自分のペースに合わせて無理なく学習を進めることができます。</p>
+    <p>※自治体に申請し認められた場合のみ、在宅訓練が可能です。</p>
+  </benefit-content>
+  <benefit-content>
+    <span slot="number">02</span>
+    <span slot="title">独自のeラーニングでITスキルアップ</span>
+    <img slot="img" src="https://events.tompedia.jp/20251018/assets/e-learningする女性.jpg" alt="e-learningする女性">
+    <p>就労移行支援manabyでは独自のeラーニングを活用し、ITスキルやビジネスマナーを学習することができます。個別学習が中心のため、体調に合わせて自分のペースで進められます。</p>
+  </benefit-content>
+  <benefit-content>
+    <span slot="number">03</span>
+    <span slot="title">一人ひとりに合わせた個別支援</span>
+    <img slot="img" src="https://events.tompedia.jp/20251018/assets/ヒアリングする女性.jpg" alt="ヒアリングする女性">
+    <p>障害への理解が深い専門スタッフが在籍しており、一人ひとりの状況や希望に合わせたサポートを提供しています。安心して自分に合った働き方を目指せる環境が整っています。</p>
+  </benefit-content>
+  <section-title>ご利用者様の声</section-title>
+  <user-review>
+    <img slot="img" src="https://events.tompedia.jp/20251018/assets/pc作業おじさん.jpg" alt="pc作業">
+    <span slot="title">うつ病、5年の療養を経て見つけた「私らしい仕事」のかたち (Rさん)</span>
+    <p>うつ病で5年間療養していたRさん。働くことが怖く、一歩を踏み出せずにいましたが、在宅と通所を組み合わせた訓練で少しずつ前進し、バラ農園への就職が決定。</p>
+    <p>「電話が怖かったらネットでも申し込みできる。時間がかかってもいいし、少しずつ始められます」</p>
+    <p>現在は出荷作業だけでなく、広報やデータ分析にも取り組んでいます。</p>
+  </user-review>
+  <user-review>
+    <img slot="img" src="https://events.tompedia.jp/20251018/assets/pc操作.jpg" alt="pc操作">
+    <span slot="title">「苦しい」って言ってもいい。manabyで学んだこと (Jさん)</span>
+    <p>感覚過敏や不安症状に悩みながらも、自分に合う働き方を探し続けたJさん。訓練を通して自分の特性を理解し、週5日在宅勤務のデータ入力の仕事に就職しました。</p>
+    <p>「自分の特性や体調の波を理解できるように、支援員がサポートしてくれる。一人でがむしゃらに進めるのではなく、二人三脚でやってみて」</p>
+    <p>現在は自分のペースで安定して働き続けています。</p>
+  </user-review>
+  <div class="filled">
+    <section-title>就労移行支援で受けられる<br />4つのサポート</section-title>
+    <support-point>
+      <span slot="number">01</span>
+      <span slot="title">体調・生活リズムを整える</span>
+      <p>就労移行支援は、一般就労を目指す障害のある方（18歳以上65歳未満）を対象に働くための総合的なサポート（体調管理・スキルアップ・就職活動）が受けられる場所です。</p>
+    </support-point>
+    <support-point>
+      <span slot="number">02</span>
+      <span slot="title">一般就労に向けたスキル学習</span>
+      <p>事業所に通いながら、就労に必要な知識や力を身に着けていくことができます。</p>
+      <p>プログラムは事業所によって異なりますが、事務スキルやデザイン、プログラミング、資格取得のサポート、ビジネスマナーなど、幅広い内容が用意されています。</p>
+    </support-point>
+    <support-point>
+      <span slot="number">03</span>
+      <span slot="title">一人ひとりにあった<br />就職活動のサポート</span>
+      <p>事業所に通いながら、就労に必要な知識や力を身に着けていくことができます。</p>
+      <p>プログラムは事業所によって異なりますが、事務スキルやデザイン、プログラミング、資格取得のサポート、ビジネスマナーなど、幅広い内容が用意されています。</p>
+    </support-point>
+    <support-point>
+      <span slot="number">04</span>
+      <span slot="title">就職後も長く<br />働き続けられるようにフォロー</span>
+      <p>就職後も長く安定して働けるよう、6ヶ月間の定期的なフォローアップを行っています。</p>
+      <p>企業と密に連携を取り、利用者が働きやすい職場環境を整え、安定して働き続けられる環境づくりをお手伝いします。</p>
+    </support-point>
+    <faq-title>よくある質問</faq-title>
+  </div>
 </body>
 
 </html>
