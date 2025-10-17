@@ -865,4 +865,4 @@ Webページを使う人には、色々な状況や能力の人がいます。�
 
 # お疲れ様でした！
 
-![プルリクしました](https://events.tompedia.jp/20251018/assets/プルリクしました.png)
+![bg 30%](https://events.tompedia.jp/20251018/assets/プルリクしました.png)
