@@ -18,6 +18,12 @@
       box-sizing: border-box;
       color: #444444;
     }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
   </style>
 
   <!-- ヘッダー1 -->
@@ -571,6 +577,7 @@
         position: relative;
 
         padding: 0 6px;
+        margin-bottom: 10px;
 
         width: 123px;
         height: 32px;
@@ -583,7 +590,7 @@
         border-radius: 16px;
 
         font-size: 20px;
-        font-style: normal;
+        font-weight: 600;
       }
 
       .serif::after {
@@ -597,6 +604,7 @@
         height: 24px;
         background: #AACF53;
         mask: url('https://events.tompedia.jp/20251018/assets/吹き出しマーク.svg') no-repeat top / cover;
+        transform: scaleX(-1);
       }
 
       h2 {
@@ -607,7 +615,201 @@
 
     <div class="faq-title">
       <div class="serif">FAQ</div>
-      <h2><slot>よくある質問</slot></h2>
+      <h2>
+        <slot>よくある質問</slot>
+      </h2>
+    </div>
+  </template>
+
+  <template id="faq-accordion">
+    <style>
+      .accordion {
+        margin: 16px;
+      }
+
+      .qa {
+        font-size: 24px;
+        font-weight: bold;
+        color: #AACF53;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        justify-content: stretch;
+        gap: 12px;
+
+        background: white;
+
+        padding: 10px 12px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        position: relative;
+      }
+
+      label input {
+        display: none;
+      }
+
+      label p {
+        margin: 0;
+        flex: 1;
+      }
+
+      label .toggle {
+        background: #AACF53;
+
+        height: 24px;
+        width: 24px;
+      }
+
+      label .toggle span {
+        display: inline-block;
+
+        width: 100%;
+
+        font-size: 24px;
+        line-height: 24px;
+        text-align: center;
+
+        color: black;
+        transition: transform 0.3s ease;
+      }
+
+      label input:checked~.toggle span {
+        transform: rotate(45deg);
+      }
+
+      .content {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+
+        height: 0;
+
+        margin: 10px 12px;
+
+        overflow: hidden;
+
+        transition: height 0.3s ease;
+      }
+
+      label:has(input:checked)~.content {
+        height: auto;
+      }
+
+      .content ::slotted(*) {
+        margin: 0;
+        font-size: 16px;
+      }
+    </style>
+
+    <div class="accordion">
+      <label>
+        <input type="checkbox">
+        <div class="qa">Q</div>
+        <p>
+          <slot name="question">質問タイトル</slot>
+        </p>
+        <div class="toggle"><span>+</span></div>
+      </label>
+      <div class="content">
+        <div class="qa">A</div>
+        <div class="answer">
+          <slot>質問内容</slot>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="button-with-slogan">
+    <style>
+      .consult {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+
+        margin: 30px 0;
+
+        text-align: center;
+      }
+
+      .slogan {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 18px;
+        font-weight: bold;
+
+        position: relative;
+      }
+
+      .slogan::before,
+      .slogan::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        background: #AACF53;
+      }
+
+      .slogan::before {
+        left: -50px;
+        transform: rotate(-45deg);
+      }
+
+      .slogan::after {
+        right: -50px;
+        transform: rotate(45deg);
+      }
+
+      .button {
+        display: flex;
+        align-self: stretch;
+
+        margin: 0 19px;
+        padding: 10px 20px;
+
+        background: #AACF53;
+        color: white;
+
+        border-radius: 50ch;
+
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .button::after {
+        content: '>';
+
+        display: block;
+        width: 30px;
+        height: 30px;
+
+        border-radius: 15px;
+
+        background: white;
+        color: #AACF53;
+      }
+
+      .button ::slotted(a) {
+        display: block;
+        flex: 1;
+
+        color: inherit;
+        text-decoration: none;
+      }
+    </style>
+    <div class="consult">
+      <div class="slogan">
+        <slot name="slogan">仕事が続かない…体調が不安…<br />お気軽にご相談ください！</slot>
+      </div>
+      <div class="button">
+        <slot><a href="https://example.com/consultation">ボタンのテキスト</a></slot>
+      </div>
     </div>
   </template>
 
@@ -615,17 +817,12 @@
   <template id="app-footer">
     <style>
       footer {
-        background-color: #333;
-        color: white;
         text-align: center;
-        padding: 1rem;
-        position: relative;
-        bottom: 0;
-        width: 100%;
+        padding: 24px;
       }
     </style>
     <footer>
-      <p>&copy; 2025 とんペディアハッカソン</p>
+      <slot>株式会社manaby</slot>
     </footer>
   </template>
 </head>
@@ -704,7 +901,46 @@
       <p>企業と密に連携を取り、利用者が働きやすい職場環境を整え、安定して働き続けられる環境づくりをお手伝いします。</p>
     </support-point>
     <faq-title>よくある質問</faq-title>
+    <faq-accordion>
+      <span slot="question">就労移行支援はどのような人が利用できますか？</span>
+      <p>就労移行支援は、障害者手帳をお持ちの18歳以上65歳未満の方が利用できます。精神障害、発達障害、身体障害、知的障害など、さまざまな障害をお持ちの方が対象です。</p>
+    </faq-accordion>
+    <faq-accordion>
+      <span slot="question">就労継続支援A型、B型との違いは何ですか？</span>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, ad sint nostrum repellendus consequuntur
+        deserunt quam doloremque, nobis quia repellat nemo? Minus corporis libero accusantium, id ab culpa? Vel,
+        ratione.</p>
+    </faq-accordion>
+    <faq-accordion>
+      <span slot="question">利用条件を教えてください。</span>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id numquam voluptatibus eius harum esse perspiciatis
+        eum alias, rerum, voluptas, blanditiis non quae expedita necessitatibus quia rem provident placeat magni!
+        Libero!</p>
+    </faq-accordion>
+    <faq-accordion>
+      <span slot="question">どうやって利用を開始するのですか？</span>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sapiente dolore suscipit, consequuntur
+        officia optio quae iusto? Cum sint deserunt eligendi officiis, accusamus, commodi ipsa sit debitis voluptatibus
+        nemo autem.</p>
+    </faq-accordion>
+    <faq-accordion>
+      <span slot="question">障害者手帳がなくても利用できますか？</span>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi quam temporibus doloribus, cumque ex dolorem
+        iste delectus voluptatibus nulla a voluptatem et beatae alias consequuntur rem labore asperiores minima officia.
+      </p>
+    </faq-accordion>
+    <faq-accordion>
+      <span slot="question">通院中でも利用できますか？</span>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur porro, facilis error recusandae harum
+        perferendis possimus aperiam modi fugit. Sunt vel dolore quod repudiandae deserunt, neque hic odit optio fugiat?
+      </p>
+    </faq-accordion>
   </div>
+  <button-with-slogan>
+    <span slot="slogan">仕事が続かない…体調が不安…<br />お気軽にご相談ください！</span>
+    <a href="https://example.com/consultation">相談・見学を予約する</a>
+  </button-with-slogan>
+  <app-footer>株式会社manaby</app-footer>
 </body>
 
 </html>

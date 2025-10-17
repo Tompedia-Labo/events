@@ -10,6 +10,12 @@
         box-sizing: border-box;
         color: #444444;
     }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
 </style>
 
 <!-- ヘッダー1 -->
@@ -563,6 +569,7 @@
             position: relative;
 
             padding: 0 6px;
+            margin-bottom: 10px;
 
             width: 123px;
             height: 32px;
@@ -575,7 +582,7 @@
             border-radius: 16px;
 
             font-size: 20px;
-            font-style: normal;
+            font-weight: 600;
         }
 
         .serif::after {
@@ -589,6 +596,7 @@
             height: 24px;
             background: #AACF53;
             mask: url('https://events.tompedia.jp/20251018/assets/吹き出しマーク.svg') no-repeat top / cover;
+            transform: scaleX(-1);
         }
 
         h2 {
@@ -605,20 +613,207 @@
     </div>
 </template>
 
+<template id="faq-accordion">
+    <style>
+        .accordion {
+            margin: 16px;
+        }
+
+        .qa {
+            font-size: 24px;
+            font-weight: bold;
+            color: #AACF53;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            justify-content: stretch;
+            gap: 12px;
+
+            background: white;
+
+            padding: 10px 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+
+        label input {
+            display: none;
+        }
+
+        label p {
+            margin: 0;
+            flex: 1;
+        }
+
+        label .toggle {
+            background: #AACF53;
+
+            height: 24px;
+            width: 24px;
+        }
+
+        label .toggle span {
+            display: inline-block;
+
+            width: 100%;
+
+            font-size: 24px;
+            line-height: 24px;
+            text-align: center;
+
+            color: black;
+            transition: transform 0.3s ease;
+        }
+
+        label input:checked~.toggle span {
+            transform: rotate(45deg);
+        }
+
+        .content {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+
+            height: 0;
+
+            margin: 10px 12px;
+
+            overflow: hidden;
+
+            transition: height 0.3s ease;
+        }
+
+        label:has(input:checked)~.content {
+            height: auto;
+        }
+
+        .content ::slotted(*) {
+            margin: 0;
+            font-size: 16px;
+        }
+    </style>
+
+    <div class="accordion">
+        <label>
+            <input type="checkbox">
+            <div class="qa">Q</div>
+            <p>
+                <slot name="question">質問タイトル</slot>
+            </p>
+            <div class="toggle"><span>+</span></div>
+        </label>
+        <div class="content">
+            <div class="qa">A</div>
+            <div class="answer">
+                <slot>質問内容</slot>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="button-with-slogan">
+    <style>
+        .consult {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+
+            margin: 30px 0;
+
+            text-align: center;
+        }
+
+        .slogan {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            position: relative;
+        }
+
+        .slogan::before,
+        .slogan::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: #AACF53;
+        }
+
+        .slogan::before {
+            left: -50px;
+            transform: rotate(-45deg);
+        }
+
+        .slogan::after {
+            right: -50px;
+            transform: rotate(45deg);
+        }
+
+        .button {
+            display: flex;
+            align-self: stretch;
+
+            margin: 0 19px;
+            padding: 10px 20px;
+
+            background: #AACF53;
+            color: white;
+
+            border-radius: 50ch;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .button::after {
+            content: '>';
+
+            display: block;
+            width: 30px;
+            height: 30px;
+
+            border-radius: 15px;
+
+            background: white;
+            color: #AACF53;
+        }
+
+        .button ::slotted(a) {
+            display: block;
+            flex: 1;
+
+            color: inherit;
+            text-decoration: none;
+        }
+    </style>
+    <div class="consult">
+        <div class="slogan">
+            <slot name="slogan">仕事が続かない…体調が不安…<br />お気軽にご相談ください！</slot>
+        </div>
+        <div class="button">
+            <slot><a href="https://example.com/consultation">ボタンのテキスト</a></slot>
+        </div>
+    </div>
+</template>
+
 <!-- フッター -->
 <template id="app-footer">
     <style>
         footer {
-            background-color: #333;
-            color: white;
             text-align: center;
-            padding: 1rem;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            padding: 24px;
         }
     </style>
     <footer>
-        <p>&copy; 2025 とんペディアハッカソン</p>
+        <slot>株式会社manaby</slot>
     </footer>
 </template>
